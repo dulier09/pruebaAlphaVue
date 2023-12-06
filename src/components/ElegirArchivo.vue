@@ -14,40 +14,37 @@
   export default {
     data() {
       return {
-        tablares: ''
+        tablares: '',
+        nombresColumnas: ['REFERENCIA', 'NOMBRE COMPLETO', 'REGISTRO', 'CÓDIGO']
       };
     },
     methods: {
       crearTabla(data) {
         const todasFilas = data.split(/\r?\n|\r/);
         let tabla = '<table>';
-        for (let fila = 0; fila < todasFilas.length; fila++) {
-          if (fila === 0) {
-            tabla += '<thead>';
-            tabla += '<tr>';
-          } else {
-            tabla += '<tr>';
-          }
-          const celdasFila = todasFilas[fila].split('#');
-          for (let rowCell = 0; rowCell < celdasFila.length; rowCell++) {
-            if (fila === 0) {
-              tabla += '<th>';
-              tabla += celdasFila[rowCell];
-              tabla += '</th>';
-            } else {
-              tabla += '<td>';
-              tabla += celdasFila[rowCell];
-              tabla += '</td>';
-            }
-          }
-          if (fila === 0) {
-            tabla += '</tr>';
-            tabla += '</thead>';
-            tabla += '<tbody>';
-          } else {
-            tabla += '</tr>';
-          }
-        } 
+        tabla += '<thead>';
+        tabla += '<tr>';
+          for (let col = 0; col < this.nombresColumnas.length; col++) {
+        tabla += '<th>';
+        tabla += this.nombresColumnas[col];
+        tabla += '</th>';
+        }
+        tabla += '</tr>';
+        tabla += '</thead>';
+        tabla += '<tbody>';
+
+          for (let fila = 0; fila < todasFilas.length; fila++) {
+        tabla += '<tr>';
+        const celdasFila = todasFilas[fila].split('#');
+        for (let rowCell = 0; rowCell < celdasFila.length; rowCell++) {
+          tabla += '<td>';
+          tabla += celdasFila[rowCell];
+          tabla += '</td>';
+        }
+        tabla += '</tr>';
+      }
+
+
         tabla += '</tbody>';
         tabla += '</table>';
         this.tablares = tabla;
