@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
       <h1>Gestión de archivos</h1>
       <h2>Seleccionar para procesar y luego mostrar en tabla</h2>
       <p>Selecciona el archivo a gestionar</p>
@@ -69,5 +69,54 @@
   };
   </script>
   
-  <style scoped>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(#32b767, #18c07d);
+  }
+
+  .container {
+    border: solid 1px rgba(255, 255, 255, 0.2);
+  }
+
+  table {
+    color: #fff;
+    font-size: 14px;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background: rgba(243, 140, 210, 0.4);
+  }
+
+  th {
+    padding: 20px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 15px;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  }
+
+  tbody tr {
+    cursor: pointer;
+  }
+
+  tbody :hover {
+    background: rgba(243, 103, 199, 0.4);
+  }
+
   </style>
